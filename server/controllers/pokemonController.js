@@ -2,6 +2,7 @@ const Pokemon = require('../models/pokemonModel');
 
 const pokemonController = {};
 
+//Asynchronous put request to the database which returns the new Pokemon document
 pokemonController.createPokemon = async (req, res, next) => {
     const newPokemon = await Pokemon.create(req.body)
     console.log('newPokemon ', newPokemon);
@@ -9,6 +10,7 @@ pokemonController.createPokemon = async (req, res, next) => {
     return next();
 };
 
+//Asynchronous get request to the database which returns the all Pokemon documents
 pokemonController.getAllPokemon = async (req, res, next) => {
     const allRetrievedPokemon = await Pokemon.find({})
     console.log('allRetrievedPokemon ', allRetrievedPokemon);
@@ -16,6 +18,7 @@ pokemonController.getAllPokemon = async (req, res, next) => {
     return next();
 };
 
+//Asynchronous get request to the database which returns a Pokemon document based on name
 pokemonController.getPokemon = async (req, res, next) => {
     const retrievedPokemon = await Pokemon.findOne({name: req.params.name})
     console.log('retrievedPokemon ', retrievedPokemon);
@@ -23,6 +26,7 @@ pokemonController.getPokemon = async (req, res, next) => {
     return next();
 };
 
+//Asynchronous patch request to the database which updates and returns a Pokemon document based on name
 pokemonController.updatePokemon = async (req, res, next) => {
    const updatedPokemon = await Pokemon.findOneAndUpdate({name: req.params.name}, req.body) 
    console.log('updatedPokemon ', updatedPokemon);
@@ -30,6 +34,7 @@ pokemonController.updatePokemon = async (req, res, next) => {
    return next();
 };
 
+//Asynchronous delete request to the database which deletes a Pokemon document based on name
 pokemonController.deletePokemon = async (req, res, next) => {
     const deletedPokemon = await Pokemon.deleteOne({name: req.params.name});
     // console.log('deletedPokemon ', deletedPokemon)

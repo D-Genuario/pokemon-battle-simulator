@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 import Pokemon from "./Pokemon.jsx";
 
+//Component to model our database for greater visibility into what pokemon can be queried/summoned
 class PokemonHolder extends Component{
    constructor(props) {
        super(props);
@@ -14,6 +15,7 @@ class PokemonHolder extends Component{
        this.queryAllPokemon = this.queryAllPokemon.bind(this);
    }
 
+   //query method bound to this component which gets the current list of pokemon from the database
    queryAllPokemon(){
     fetch(`/pokemon/`, {
         method: 'GET',
@@ -31,10 +33,12 @@ class PokemonHolder extends Component{
         .catch(err => console.log(`retrieveAllPokemon fetch /pokemon/ ERROR: `, err))
    }
 
+   //Query all pokemon is nested within didMount so that it populates on first render
    componentDidMount(){
         this.queryAllPokemon();
    }
 
+    //Query all pokemon is nested within didUpdate so that it requeries whenever a pokemon is added or dies
    componentDidUpdate(){
     this.queryAllPokemon();
    }
@@ -58,30 +62,19 @@ class PokemonHolder extends Component{
                     key={i}
                     name={elem.name}
                     attack={elem.attack}
-                    hp={elem.hp}/>
+                    hp={elem.hp}
+                    xp={elem.xp}/>
                 </div>
 
             );
         });
 
         return (
-            <div class='flex'>
-             <div>Pokemon available for summon...</div>
-             {pokemonElems}
+            <div class='gridContainer'>
+                 {pokemonElems}
             </div>
          )
     }
 }
 
 export default PokemonHolder
-
-/*
-            data.forEach(elem => {
-                console.log('elem name ', elem.name);
-                console.log('elem attack ', elem.attack);
-                console.log('elem hp ', elem.hp);
-                pokemonArray.push(<Pokemon name={elem.name} attack={elem.attack} hp={elem.hp}/>)
-            })
-    
-            console.log('pokemonArray ', pokemonArray)
-*/

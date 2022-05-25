@@ -1,3 +1,16 @@
+$primary-black: #22292F;
+$secondary-black: #606F78;
+$tertiary-black: #DAE1E7;
+$quaternary-black: #F8FAFC;
+
+html {
+    font-size: 1vw;
+}
+
+body {
+    background-color: $quaternary-black;
+}
+
 #root {
     display: flex;
     flex-direction: column;
@@ -23,32 +36,53 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: gainsboro;
-    border: 1px solid black;
+    background-color: $tertiary-black;
+    border: 1px solid;
+    border-color: $secondary-black;
     border-radius: 3px;
-    margin: 3px;
+    margin: 5px;
 }
 
 .gridContainer {
     display: grid;
-    background-color: gainsboro;
+    grid-template-columns: repeat(5, minmax(280px, 1fr));
+    background-color: $secondary-black;
     border: 1px solid black;
     border-radius: 3px;
-    margin: 3px;
+    margin: 5px;
 }
+
+@media (max-width: 1400px) {
+    .gridContainer{
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+  }
 
 .pokemonCard {
     background-color: gainsboro;
-    border: 3px solid black;
+    border: 1px solid $tertiary-black;
     border-radius: 3px;
-    margin: 3px;
+    margin: 5px;
+    box-shadow: 0px 5px 2.5px 0px $tertiary-black;
 }
 
 button {
-    background-color: chartreuse;
-    width: 50%;
+    border-color: $tertiary-black;
+    background-color: #1a73e8;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    padding: 6px 12px 6px 12px;
+    margin: 2.5px;
+    width: 25%;
 }
 
 #beginBattleButton {
-    background-color: red;
+    border-color: #1a73e8;
+    background-color: #fff;
+    color: #1a73e8;
+    border-radius: 4px;
+    border: 1px solid #1a73e8;
+    padding: 6px 12px 6px 12px;
+    margin: 2.5px;
 }
