@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Pokemon from './components/Pokemon';
+import PokemonQueryTool from './components/PokemonQueryTool.jsx';
+
+import './stylesheets/styles.scss';
 
 class App extends Component{
+
     render(){
         return(
-            <div>
-                <h1>This is a React App that automatically reloads?</h1>
-                <div><Pokemon name='Poopachu' attack={69} hp={420}/></div>
-            </div>
+            <main>
+                <h1>This is a React App that automatically reloads...extremely slowly</h1>
+                <PokemonQueryTool />
+            </main>
         )
     }
 }

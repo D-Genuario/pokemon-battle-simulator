@@ -9,7 +9,7 @@ const MONGO_URI = 'mongodb+srv://dgenuario:SzGEgEP30GPHfuya@cluster0.jau5jaa.mon
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: ''
+    dbName: 'test'
 })
     .then(() => console.log('Connected to Mongo DB.'))
     .catch(err => console.log(err));
@@ -27,7 +27,13 @@ pokemonRouter.post('/', pokemonController.createPokemon, (req, res) => {
     return res.send(res.locals.newPokemon)
 });
 
-// Get a pokemon from the database
+// Get all pokemon from the database
+// http://localhost:3000/pokemon/
+pokemonRouter.get('/', pokemonController.getAllPokemon, (req, res) => {
+    return res.send(res.locals.allRetrievedPokemon)
+});
+
+// Get a specific pokemon from the database
 // http://localhost:3000/pokemon/"name"
 pokemonRouter.get('/:name', pokemonController.getPokemon, (req, res) => {
     return res.send(res.locals.retrievedPokemon)
@@ -42,7 +48,7 @@ pokemonRouter.patch('/:name', pokemonController.updatePokemon, (req, res) => {
 // Delete a pokemon from the database
 // http://localhost:3000/pokemon/"name"
 pokemonRouter.delete('/:name', pokemonController.deletePokemon, (req, res) => {
-    return res.send("Your pokemon died bro")
+    return res.send(JSON.stringify({message: "Your pokemon died bro"}))
 });
 
 app.get('/stop', (req,res) => {
@@ -68,11 +74,3 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 })
-
-/*
-SzGEgEP30GPHfuya
-
-mongodb+srv://dgenuario:<password>@cluster0.jau5jaa.mongodb.net/?retryWrites=true&w=majority
-
-mongodb+srv://dgenuario:SzGEgEP30GPHfuya@cluster0.jau5jaa.mongodb.net/?retryWrites=true&w=majority
-*/

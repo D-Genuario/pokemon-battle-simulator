@@ -9,6 +9,13 @@ pokemonController.createPokemon = async (req, res, next) => {
     return next();
 };
 
+pokemonController.getAllPokemon = async (req, res, next) => {
+    const allRetrievedPokemon = await Pokemon.find({})
+    console.log('allRetrievedPokemon ', allRetrievedPokemon);
+    res.locals.allRetrievedPokemon = allRetrievedPokemon;
+    return next();
+};
+
 pokemonController.getPokemon = async (req, res, next) => {
     const retrievedPokemon = await Pokemon.findOne({name: req.params.name})
     console.log('retrievedPokemon ', retrievedPokemon);
@@ -24,9 +31,18 @@ pokemonController.updatePokemon = async (req, res, next) => {
 };
 
 pokemonController.deletePokemon = async (req, res, next) => {
-    await Pokemon.deleteOne({name: req.params.name});
-    console.log('Pokemon successfully deleted');
-    return next();
+    const deletedPokemon = await Pokemon.deleteOne({name: req.params.name});
+    // console.log('deletedPokemon ', deletedPokemon)
+    const { acknowledged , deletedCount } = deletedPokemon;
+    if(acknowledged === true && deletedCount === 1){
+        return next();
+    }
+    return next({
+        log: 'Express error handler caught error in PokemonController.deletePokemon',
+        status: 500,
+        message: { err: 'Failed to delete Pokemon' },
+      })
+
 };
 
 module.exports = pokemonController;

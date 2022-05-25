@@ -6,9 +6,9 @@ const Pokemon = (props) => {
 
     return (
         <div>
-            <div>Name: {name}</div>
-            <div>Attack: {attack}</div>
-            <div>HP: {hp}</div>
+            <div>Name: {name} </div>
+            <div>Attack: {attack} </div> 
+            <div>HP: {hp}</div> 
         </div>
     )
 }

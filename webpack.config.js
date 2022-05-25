@@ -11,6 +11,16 @@ module.exports = {
     devServer: {
         static: {
             directory: path.join(__dirname, './dist')
+        },
+        proxy: {
+            '/pokemon': {
+                target: 'http://localhost:8080',
+                router: () => 'http://localhost:3000',
+                logLevel: 'debug'
+            }
+        },
+        client:{
+            overlay: false
         }
     },
     module: {
@@ -24,7 +34,12 @@ module.exports = {
                         presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
-            }
+            },
+            {
+                test: /.(css|scss)$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader'],
+              }
         ]
     },
     plugins: [
