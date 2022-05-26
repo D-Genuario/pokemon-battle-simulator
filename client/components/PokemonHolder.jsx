@@ -63,7 +63,8 @@ class PokemonHolder extends Component{
                     name={elem.name}
                     attack={elem.attack}
                     hp={elem.hp}
-                    xp={elem.xp}/>
+                    xp={elem.xp}
+                    imgSrc={elem.imgSrc}/>
                 </div>
 
             );

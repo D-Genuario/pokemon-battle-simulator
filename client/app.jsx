@@ -9,7 +9,7 @@ class App extends Component{
 
     render(){
         return(
-            <main class='container'>
+            <main id='mainContainer'>
                 <h1>This is a React App that automatically reloads...extremely slowly</h1>
                 <PokemonQueryTool />
             </main>
