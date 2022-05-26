@@ -54,7 +54,7 @@ class PokemonHolder extends Component{
         const { pokemon } = this.state;
         
         const pokemonElems = pokemon.map((elem, i) => {
-            if(elem.name === 'Poopachu' || elem.name === 'Charishard' || elem.name === 'Jeebus') return;
+            if(elem.name === 'Pikachoo' || elem.name === 'Charishard' || elem.name === 'Jeebus') return;
 
             return (
                 <div class='pokemonCard'>
