@@ -11,7 +11,7 @@ class PokemonHolder extends Component{
            pokemon: []
        }
 
-       console.log('this.props.fetchedPokemon ', this.props.fetchedPokemon)
+    //    console.log('this.props.fetchedPokemon ', this.props.fetchedPokemon)
        this.queryAllPokemon = this.queryAllPokemon.bind(this);
    }
 
@@ -54,7 +54,7 @@ class PokemonHolder extends Component{
         const { pokemon } = this.state;
         
         const pokemonElems = pokemon.map((elem, i) => {
-            if(elem.name === 'Pikachoo' || elem.name === 'Charishard' || elem.name === 'Jeebus') return;
+            if(elem.name === 'Pikachoo' || elem.name === 'Charishard' || elem.name === 'Jeebus' || elem.name === 'MALENIA, BLADE OF MIQUELLA') return;
 
             return (
                 <div class='pokemonCard'>

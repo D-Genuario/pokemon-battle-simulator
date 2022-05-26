@@ -175,6 +175,7 @@ const PokemonQueryTool = () => {
             <button class='challengeButton' onClick={() => retrieveSelectedPokemon('Pikachoo', 'opponent')}>Challenge Pikachoo</button>
             <button class='challengeButton' onClick={() => retrieveSelectedPokemon('Charishard', 'opponent')}>Challenge Charishard</button>
             <button class='challengeButton' onClick={() => retrieveSelectedPokemon('Jeebus', 'opponent')}>Challenge Jeebus</button>
+            <button class='challengeButton' onClick={() => retrieveSelectedPokemon('MALENIA, BLADE OF MIQUELLA', 'opponent')}>Challenge MALENIA, BLADE OF MIQUELLA</button>
         </div>
         <div id='userContainer' class='container'>
             <h2>Your Summoned "Pokeymun" is...</h2>
